@@ -98,7 +98,7 @@ function createTaskItem(section, text, index, isCompleted) {
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = 'Delete';
   deleteBtn.className = 'text-sm text-red-500';
-  deleteBtn.onclick = () => deleteTask(section, index, isCompleted);
+  deleteBtn.onclick = () => openDeleteModal(section, index, isCompleted);
   controls.appendChild(deleteBtn);
 
   li.appendChild(span);
@@ -121,16 +121,56 @@ function addTask(section) {
 
 // Edit a task
 function editTask(section, index) {
-  const newValue = prompt('Edit task', tasks[section].active[index]);
-  if (newValue !== null) {
-    tasks[section].active[index] = newValue.trim();
-    saveTasks();
+  const listItem = document.querySelectorAll(`#${section}-list li`)[index];
+  const span = listItem.querySelector('span');
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = span.textContent;
+  input.className = 'border rounded px-2 py-1 w-full bg-amber-200';
+
+  listItem.replaceChild(input, span);
+  input.focus();
+
+  input.addEventListener('blur', saveEdit);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') saveEdit();
+  });
+
+  function saveEdit() {
+    const newValue = input.value.trim();
+    if (newValue && newValue !== span.textContent) {
+      tasks[section].active[index] = newValue;
+      saveTasks();
+    }
     renderSection(section);
   }
 }
 
 // Delete a task
-function deleteTask(section, index, isCompleted) {
+let pendingDelete = { section: null, index: null, isCompleted: false };
+
+const modal = document.getElementById('delete-modal');
+const backdrop = document.getElementById('modal-backdrop');
+const cancelBtn = document.getElementById('modal-cancel');
+const confirmBtn = document.getElementById('modal-confirm');
+
+function openDeleteModal(section, index, isCompleted) {
+  pendingDelete = { section, index, isCompleted };
+  modal.classList.remove('hidden');
+  backdrop.classList.remove('hidden');
+}
+
+function closeDeleteModal() {
+  modal.classList.add('hidden');
+  backdrop.classList.add('hidden');
+  pendingDelete = { section: null, index: null, isCompleted: false };
+}
+
+cancelBtn.addEventListener('click', closeDeleteModal);
+
+confirmBtn.addEventListener('click', () => {
+  const { section, index, isCompleted } = pendingDelete;
   if (isCompleted) {
     tasks[section].completed.splice(index, 1);
   } else {
@@ -138,7 +178,8 @@ function deleteTask(section, index, isCompleted) {
   }
   saveTasks();
   renderSection(section);
-}
+  closeDeleteModal();
+});
 
 // Toggle task completion
 function toggleComplete(section, index, isCompleted) {
