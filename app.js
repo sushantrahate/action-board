@@ -12,6 +12,16 @@ sections.forEach((section) => {
   };
 });
 
+// Enable Enter key to add tasks
+sections.forEach((section) => {
+  const input = document.getElementById(`${section}-input`);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      addTask(section);
+    }
+  });
+});
+
 // Save to localStorage
 function saveTasks() {
   sections.forEach((section) => {
