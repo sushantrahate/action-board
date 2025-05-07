@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Daily Planner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    .paper {
+      background-color: #fefefe;
+      background-image: repeating-linear-gradient(to bottom,
+          transparent,
+          transparent 23px,
+          #e0e0e0 24px);
+      font-family: 'Patrick Hand', cursive;
+      font-style: normal;
+    }
+  </style>
+
+</head>
+
+<body class="bg-[#ffed80] p-6 text-xl">
+  <h1 class="text-3xl font-bold text-center mb-8 text-gray-700">📝 Action Board</h1>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Left Column -->
+    <div class="space-y-6">
+      <!-- To Do List Section -->
+      <section id="todo-section" class="bg-[#fff6c3] paper p-6 rounded-lg shadow-sm border border-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">🎯 To Do List</h2>
+        <ul id="todo-list" class="space-y-2 mb-4"></ul>
+        <div class="flex gap-2">
+          <input type="text" id="todo-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
+            placeholder="Add new task" />
+          <button onclick="addTask('todo')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+        </div>
+        <div id="todo-completed-section" class="mt-8 hidden">
+          <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
+          <ul id="todo-completed-list" class="space-y-2"></ul>
+        </div>
+      </section>
+
+      <!-- Notes Section -->
+      <section id="notes-section" class="bg-[#fff6c3] paper p-6 rounded-lg shadow-sm border border-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">🗒️ Notes</h2>
+        <ul id="notes-list" class="space-y-2 mb-4"></ul>
+        <div class="flex gap-2">
+          <input type="text" id="notes-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
+            placeholder="Add new note" />
+          <button onclick="addTask('notes')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+        </div>
+        <div id="notes-completed-section" class="mt-6 hidden">
+          <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
+          <ul id="notes-completed-list" class="space-y-2"></ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right Column -->
+    <div class="space-y-6">
+      <!-- Top Priorities Section -->
+      <section id="priorities-section" class="bg-[#fff6c3] paper p-6 rounded-lg shadow-sm border border-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">🔝 Top Priorities</h2>
+        <ul id="priorities-list" class="space-y-2 mb-4"></ul>
+        <div class="flex gap-2">
+          <input type="text" id="priorities-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
+            placeholder="Add new priority" />
+          <button onclick="addTask('priorities')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+        </div>
+        <div id="priorities-completed-section" class="mt-6 hidden">
+          <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
+          <ul id="priorities-completed-list" class="space-y-2"></ul>
+        </div>
+      </section>
+
+      <!-- Must Call/Email Section -->
+      <section id="calls-section" class="bg-[#fff6c3] paper p-6 rounded-lg shadow-sm border border-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">📞 Must Call/Email</h2>
+        <ul id="calls-list" class="space-y-2 mb-4"></ul>
+        <div class="flex gap-2">
+          <input type="text" id="calls-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
+            placeholder="Add new contact" />
+          <button onclick="addTask('calls')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+        </div>
+        <div id="calls-completed-section" class="mt-6 hidden">
+          <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
+          <ul id="calls-completed-list" class="space-y-2"></ul>
+        </div>
+      </section>
+
+      <!-- Tomorrow's Tasks Section -->
+      <section id="tomorrow-section" class="bg-[#fff6c3] paper p-6 rounded-lg shadow-sm border border-gray-300">
+        <h2 class="text-2xl font-semibold mb-4">📆 Tomorrow's Tasks</h2>
+        <ul id="tomorrow-list" class="space-y-2 mb-4"></ul>
+        <div class="flex gap-2">
+          <input type="text" id="tomorrow-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
+            placeholder="Add new task for tomorrow" />
+          <button onclick="addTask('tomorrow')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+        </div>
+        <div id="tomorrow-completed-section" class="mt-6 hidden">
+          <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
+          <ul id="tomorrow-completed-list" class="space-y-2"></ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
