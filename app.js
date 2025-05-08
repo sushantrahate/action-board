@@ -84,22 +84,23 @@ function createTaskItem(section, text, index, isCompleted) {
   const completeBtn = document.createElement('button');
   completeBtn.innerHTML = isCompleted
     ? '<i class="fas fa-undo-alt px-2 text-amber-500"></i>'
-    : '<i class="fa-solid fa-circle-check"></i>';
-  completeBtn.className = 'text-md text-green-500 mr-2';
+    : '<i class="fa-solid fa-circle-check text-green-500 mx-2 "></i>';
+  completeBtn.className = 'text-[16px]';
   completeBtn.onclick = () => toggleComplete(section, index, isCompleted);
   controls.appendChild(completeBtn);
 
   if (!isCompleted) {
     const editBtn = document.createElement('button');
-    editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square px-2"></i>';
-    editBtn.className = 'text-sm text-blue-500 mr-2';
+    editBtn.innerHTML =
+      '<i class="fa-solid fa-pen-to-square text-blue-500 mx-2"></i>';
+    editBtn.className = 'text-[16px]';
     editBtn.onclick = () => editTask(section, index);
     controls.appendChild(editBtn);
   }
 
   const deleteBtn = document.createElement('button');
-  deleteBtn.innerHTML = '<i class="fa-solid fa-trash text-red-400"></i>';
-  deleteBtn.className = 'text-sm text-red-500';
+  deleteBtn.innerHTML = '<i class="fa-solid fa-trash text-red-500 ml-2"></i>';
+  deleteBtn.className = 'text-[16px]';
   deleteBtn.onclick = () => openDeleteModal(section, index, isCompleted);
   controls.appendChild(deleteBtn);
 
