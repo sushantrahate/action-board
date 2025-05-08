@@ -82,21 +82,23 @@ function createTaskItem(section, text, index, isCompleted) {
   controls.className = 'ml-4 flex items-center';
 
   const completeBtn = document.createElement('button');
-  completeBtn.textContent = isCompleted ? 'Undo' : 'Done';
-  completeBtn.className = 'text-sm text-green-500 mr-2';
+  completeBtn.innerHTML = isCompleted
+    ? '<i class="fas fa-undo-alt px-2 text-amber-500"></i>'
+    : '<i class="fa-solid fa-circle-check"></i>';
+  completeBtn.className = 'text-md text-green-500 mr-2';
   completeBtn.onclick = () => toggleComplete(section, index, isCompleted);
   controls.appendChild(completeBtn);
 
   if (!isCompleted) {
     const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
+    editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square px-2"></i>';
     editBtn.className = 'text-sm text-blue-500 mr-2';
     editBtn.onclick = () => editTask(section, index);
     controls.appendChild(editBtn);
   }
 
   const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Delete';
+  deleteBtn.innerHTML = '<i class="fa-solid fa-trash text-red-400"></i>';
   deleteBtn.className = 'text-sm text-red-500';
   deleteBtn.onclick = () => openDeleteModal(section, index, isCompleted);
   controls.appendChild(deleteBtn);

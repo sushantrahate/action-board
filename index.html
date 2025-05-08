@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <title>Action Board</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -49,7 +52,8 @@
         <div class="flex gap-2">
           <input type="text" id="todo-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
             placeholder="Add new task" />
-          <button onclick="addTask('todo')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+          <button onclick="addTask('todo')" class="bg-amber-500 text-white px-3 py-1 rounded"><i
+              class="fa-solid fa-plus"></i></button>
         </div>
         <div id="todo-completed-section" class="mt-8 hidden">
           <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
@@ -64,7 +68,8 @@
         <div class="flex gap-2">
           <input type="text" id="notes-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
             placeholder="Add new note" />
-          <button onclick="addTask('notes')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+          <button onclick="addTask('notes')" class="bg-amber-500 text-white px-3 py-1 rounded"><i
+              class="fa-solid fa-plus"></i></button>
         </div>
         <div id="notes-completed-section" class="mt-6 hidden">
           <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
@@ -82,7 +87,8 @@
         <div class="flex gap-2">
           <input type="text" id="priorities-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
             placeholder="Add new priority" />
-          <button onclick="addTask('priorities')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+          <button onclick="addTask('priorities')" class="bg-amber-500 text-white px-3 py-1 rounded"><i
+              class="fa-solid fa-plus"></i></button>
         </div>
         <div id="priorities-completed-section" class="mt-6 hidden">
           <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
@@ -97,7 +103,8 @@
         <div class="flex gap-2">
           <input type="text" id="calls-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
             placeholder="Add new contact" />
-          <button onclick="addTask('calls')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+          <button onclick="addTask('calls')" class="bg-amber-500 text-white px-3 py-1 rounded"><i
+              class="fa-solid fa-plus"></i></button>
         </div>
         <div id="calls-completed-section" class="mt-6 hidden">
           <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
@@ -112,7 +119,8 @@
         <div class="flex gap-2">
           <input type="text" id="tomorrow-input" class="bg-amber-200 border px-2 py-1 rounded w-full"
             placeholder="Add new task for tomorrow" />
-          <button onclick="addTask('tomorrow')" class="bg-amber-500 text-white px-3 py-1 rounded">Add</button>
+          <button onclick="addTask('tomorrow')" class="bg-amber-500 text-white px-3 py-1 rounded"><i
+              class="fa-solid fa-plus"></i></button>
         </div>
         <div id="tomorrow-completed-section" class="mt-6 hidden">
           <h3 class="text-lg font-semibold text-gray-600 mb-2">✅ Completed</h3>
